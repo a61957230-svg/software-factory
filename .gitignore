@@ -19,4 +19,9 @@ workers/**
 !workers/.gitkeep
 review/**
 !review/.gitkeep
+release/
+
+# Task runtime outputs
+projects/*/tasks/**
+
 **/.git/

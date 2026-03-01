@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.0.0",
+  "taskId": "ALPHA-20260301-402",
+  "projectKey": "alpha",
+  "title": "Autopilot demo: build status endpoint plan",
+  "description": "Run full automation pipeline from research to release readiness for a mock status endpoint enhancement.",
+  "type": "feature",
+  "priority": "P2",
+  "riskLevel": "low",
+  "lifecycleStage": "assignment",
+  "acceptanceCriteria": [
+    "Research notes generated",
+    "Implementation plan generated",
+    "Development checklist generated",
+    "Review decision generated",
+    "Release checklist generated"
+  ],
+  "constraints": [
+    "No production deployment",
+    "No external secret usage",
+    "Demo-only artifacts"
+  ],
+  "approvalsNeeded": {
+    "merge": true,
+    "deploy": false,
+    "securityReview": false,
+    "humanApproval": false
+  },
+  "relevantFiles": [
+    "projects/alpha/tasks/ALPHA-20260301-402/artifacts/research.md",
+    "projects/alpha/tasks/ALPHA-20260301-402/artifacts/plan.md",
+    "projects/alpha/tasks/ALPHA-20260301-402/artifacts/develop.md",
+    "projects/alpha/tasks/ALPHA-20260301-402/artifacts/review.md",
+    "projects/alpha/tasks/ALPHA-20260301-402/artifacts/release.md"
+  ],
+  "ownerAgent": "lead-project-alpha",
+  "nextAgent": "backend-worker",
+  "branch": {
+    "base": "main",
+    "name": "task/ALPHA-20260301-402-autopilot-demo"
+  },
+  "rollback": {
+    "plan": "Remove generated demo task artifacts and revert commit",
+    "notes": "No runtime behavior changes"
+  },
+  "audit": {
+    "createdBy": "router",
+    "createdAt": "2026-03-01T12:20:00Z",
+    "updatedAt": "2026-03-01T12:20:00Z"
+  }
+}

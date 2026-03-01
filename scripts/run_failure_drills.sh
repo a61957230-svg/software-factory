@@ -43,11 +43,36 @@ log "Drill2 rollback: latest config backup exists"
 ls -1t "$ROOT"/openclaw.json.backup* 2>/dev/null | head -n 3 | tee -a "$REPORT" || true
 
 log "Drill3 gateway recovery"
+DRILL3_OK=1
 if [[ "$MODE" == "execute" ]]; then
-  openclaw gateway restart | tee -a "$REPORT"
-  openclaw status --deep | tee -a "$REPORT"
+  if ! openclaw gateway restart >>"$REPORT" 2>&1; then
+    log "WARN: gateway restart command returned non-zero (continuing to probe status)"
+  fi
+
+  # Give gateway a moment and retry status a few times.
+  STATUS_OK=0
+  for i in 1 2 3 4 5; do
+    if openclaw status --deep >>"$REPORT" 2>&1; then
+      STATUS_OK=1
+      break
+    fi
+    sleep 2
+  done
+
+  if [[ "$STATUS_OK" -eq 1 ]]; then
+    log "Drill3 recovery check: PASS"
+  else
+    log "Drill3 recovery check: FAIL"
+    DRILL3_OK=0
+  fi
 else
   log "DRY: would run 'openclaw gateway restart' and 'openclaw status --deep'"
 fi
 
-log "DONE"
+if [[ "$DRILL3_OK" -eq 1 ]]; then
+  log "DONE: PASS"
+  exit 0
+else
+  log "DONE: FAIL"
+  exit 2
+fi

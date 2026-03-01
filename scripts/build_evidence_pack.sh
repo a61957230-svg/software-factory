@@ -18,6 +18,8 @@ cp -f "$BASE_DIR/scripts/monitor_factory.py" "$OUT_DIR/" || true
 cp -f "$BASE_DIR/scripts/guarded_exec.sh" "$OUT_DIR/" || true
 cp -f "$BASE_DIR/reports/monitor.latest.json" "$OUT_DIR/" 2>/dev/null || true
 cp -f "$BASE_DIR/reports/parallel-sim.latest.json" "$OUT_DIR/" 2>/dev/null || true
+cp -f "$BASE_DIR/reports/governed-e2e.latest.json" "$OUT_DIR/" 2>/dev/null || true
+cp -f "$BASE_DIR/reports/autopilot.latest.json" "$OUT_DIR/" 2>/dev/null || true
 cp -f "$BASE_DIR/reports/failure-drills.latest.txt" "$OUT_DIR/" 2>/dev/null || true
 
 # Queue + audit snapshots
