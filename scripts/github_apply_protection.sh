@@ -48,7 +48,7 @@ echo "Ruleset create response:"
 echo "$RESP"
 
 # Fallback: classic branch protection API
-curl -sS -X PUT \
+BP_RESP=$(curl -sS -X PUT \
   -H "Authorization: Bearer $GH_TOKEN" \
   -H "Accept: application/vnd.github+json" \
   "https://api.github.com/repos/$GH_OWNER/$GH_REPO/branches/$DEFAULT_BRANCH/protection" \
@@ -65,6 +65,14 @@ curl -sS -X PUT \
     "allow_force_pushes": false,
     "allow_deletions": false,
     "required_linear_history": true
-  }' | python3 -m json.tool
+  }')
 
-echo "Fallback branch protection applied (classic API)."
+echo "$BP_RESP" | python3 -m json.tool
+
+if echo "$BP_RESP" | grep -q '"url"'; then
+  echo "Fallback branch protection applied (classic API)."
+  exit 0
+fi
+
+echo "ERROR: failed to apply branch protection (ruleset + classic both failed)."
+exit 2
