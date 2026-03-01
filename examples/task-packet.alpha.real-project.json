@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0.0",
+  "taskId": "ALPHA-20260301-404",
+  "projectKey": "alpha",
+  "title": "Build real status API starter with tests",
+  "description": "Implement a working Python status API module and tests under projects/alpha/apps/status_api, then run governed pipeline.",
+  "type": "feature",
+  "priority": "P2",
+  "riskLevel": "low",
+  "lifecycleStage": "assignment",
+  "acceptanceCriteria": [
+    "status_service.py returns structured health payload",
+    "unit tests pass locally",
+    "autopilot pipeline stages all succeed",
+    "done packet generated"
+  ],
+  "constraints": [
+    "No production deployment",
+    "No external dependencies",
+    "Python standard library only"
+  ],
+  "approvalsNeeded": {
+    "merge": true,
+    "deploy": false,
+    "securityReview": false,
+    "humanApproval": false
+  },
+  "relevantFiles": [
+    "projects/alpha/apps/status_api/status_service.py",
+    "projects/alpha/apps/status_api/test_status_service.py",
+    "projects/alpha/apps/status_api/README.md"
+  ],
+  "ownerAgent": "lead-project-alpha",
+  "nextAgent": "backend-worker",
+  "branch": {
+    "base": "main",
+    "name": "task/ALPHA-20260301-404-real-status-api"
+  },
+  "rollback": {
+    "plan": "Revert PR and remove status_api folder",
+    "notes": "No external side effects"
+  },
+  "audit": {
+    "createdBy": "router",
+    "createdAt": "2026-03-01T15:12:56Z",
+    "updatedAt": "2026-03-01T15:12:56Z"
+  }
+}

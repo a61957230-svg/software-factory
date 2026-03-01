@@ -12,6 +12,8 @@ queue/done/
 audit/events/
 audit/approvals/*.json
 scripts/__pycache__/
+**/__pycache__/
+*.pyc
 **/.openclaw/
 
 # Agent runtime workspaces (keep only folder markers)
