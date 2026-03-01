@@ -3,3 +3,20 @@
 *.db
 .env
 secrets/
+
+# Runtime/generated artifacts
+reports/
+queue/assigned/
+queue/blocked/
+queue/done/
+audit/events/
+audit/approvals/*.json
+scripts/__pycache__/
+**/.openclaw/
+
+# Agent runtime workspaces (keep only folder markers)
+workers/**
+!workers/.gitkeep
+review/**
+!review/.gitkeep
+**/.git/

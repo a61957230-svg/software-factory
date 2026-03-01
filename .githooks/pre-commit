@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Lightweight secret pattern blocker
+if git diff --cached --name-only | xargs -r grep -nE 'sk-[A-Za-z0-9_-]{20,}|[0-9]{8,}:[A-Za-z0-9_-]{20,}|BEGIN (RSA|OPENSSH) PRIVATE KEY' >/tmp/factory-secret-scan.txt; then
+  echo "[pre-commit] Potential secret detected in staged changes:"
+  cat /tmp/factory-secret-scan.txt
+  exit 1
+fi
+
+exit 0

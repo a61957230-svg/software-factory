@@ -1,0 +1,10 @@
+# Replace with your actual GitHub usernames/teams.
+# Example:
+# * @your-org/release-gatekeepers @your-org/code-reviewers
+
+* @adarxvi
+
+# Security-sensitive paths
+/configs/** @adarxvi
+/scripts/guarded_exec.sh @adarxvi
+/scripts/github_apply_protection.sh @adarxvi

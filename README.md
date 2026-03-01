@@ -14,8 +14,14 @@ This package is an implementation-ready multi-agent factory scaffold for OpenCla
 1. Review `configs/openclaw.factory.single-gateway.json`
 2. Adapt paths to your host
 3. Validate packets with `python3 scripts/validate_task_packet.py examples/task-packet.alpha.json`
-4. Copy AGENTS templates from `templates/`
-5. Wire CI from `ci/github/workflows/pr-checks.yml`
+4. Enforce runtime assignment gate: `python3 scripts/assign_task.py examples/task-packet.alpha.json`
+5. Run queue/approval monitor: `python3 scripts/monitor_factory.py`
+6. Use guarded command gate for risky ops: `scripts/guarded_exec.sh --approval-id <ID> -- "<command>"`
+7. Copy AGENTS templates from `templates/`
+8. Wire CI from `.github/workflows/pr-checks.yml`
+9. Enable local git gate hooks: `git config core.hooksPath .githooks`
+10. Apply GitHub branch protection (when token available):
+   - `GH_TOKEN=... GH_OWNER=... GH_REPO=... scripts/github_apply_protection.sh`
 
 ## Agent Roster (initial)
 - router

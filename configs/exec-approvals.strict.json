@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "socket": {},
+  "defaults": {
+    "security": "allowlist",
+    "ask": "always",
+    "askFallback": "deny",
+    "autoAllowSkills": false
+  },
+  "agents": {
+    "main": {
+      "security": "allowlist",
+      "ask": "always",
+      "askFallback": "deny",
+      "autoAllowSkills": false,
+      "allowlist": []
+    },
+    "router": {
+      "security": "deny",
+      "ask": "off",
+      "askFallback": "deny",
+      "autoAllowSkills": false,
+      "allowlist": []
+    },
+    "lead-project-alpha": {
+      "security": "deny",
+      "ask": "off",
+      "askFallback": "deny",
+      "autoAllowSkills": false,
+      "allowlist": []
+    },
+    "lead-project-beta": {
+      "security": "deny",
+      "ask": "off",
+      "askFallback": "deny",
+      "autoAllowSkills": false,
+      "allowlist": []
+    },
+    "lead-project-gamma": {
+      "security": "deny",
+      "ask": "off",
+      "askFallback": "deny",
+      "autoAllowSkills": false,
+      "allowlist": []
+    },
+    "backend-worker": {
+      "security": "deny",
+      "ask": "off",
+      "askFallback": "deny",
+      "autoAllowSkills": false,
+      "allowlist": []
+    },
+    "frontend-worker": {
+      "security": "deny",
+      "ask": "off",
+      "askFallback": "deny",
+      "autoAllowSkills": false,
+      "allowlist": []
+    },
+    "qa-worker": {
+      "security": "deny",
+      "ask": "off",
+      "askFallback": "deny",
+      "autoAllowSkills": false,
+      "allowlist": []
+    },
+    "devops-worker": {
+      "security": "deny",
+      "ask": "off",
+      "askFallback": "deny",
+      "autoAllowSkills": false,
+      "allowlist": []
+    },
+    "docs-release-writer": {
+      "security": "deny",
+      "ask": "off",
+      "askFallback": "deny",
+      "autoAllowSkills": false,
+      "allowlist": []
+    },
+    "code-reviewer": {
+      "security": "deny",
+      "ask": "off",
+      "askFallback": "deny",
+      "autoAllowSkills": false,
+      "allowlist": []
+    },
+    "security-reviewer": {
+      "security": "deny",
+      "ask": "off",
+      "askFallback": "deny",
+      "autoAllowSkills": false,
+      "allowlist": []
+    },
+    "release-gatekeeper": {
+      "security": "allowlist",
+      "ask": "always",
+      "askFallback": "deny",
+      "autoAllowSkills": false,
+      "allowlist": []
+    }
+  }
+}
