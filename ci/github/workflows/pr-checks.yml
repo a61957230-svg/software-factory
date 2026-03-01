@@ -20,14 +20,29 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install
-        run: npm ci
+      - name: Install (if Node project)
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            echo "No package-lock.json; skipping npm ci"
+          fi
 
-      - name: Lint
-        run: npm run lint --if-present
+      - name: Lint (if Node project)
+        run: |
+          if [ -f package.json ]; then
+            npm run lint --if-present
+          else
+            echo "No package.json; skipping lint"
+          fi
 
-      - name: Unit Tests
-        run: npm test --if-present
+      - name: Unit Tests (if Node project)
+        run: |
+          if [ -f package.json ]; then
+            npm test --if-present
+          else
+            echo "No package.json; skipping tests"
+          fi
 
       - name: Validate sample task packet
         run: python3 scripts/validate_task_packet.py examples/task-packet.alpha.json
