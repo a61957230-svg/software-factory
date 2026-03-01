@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FactoryAuditEvent",
+  "type": "object",
+  "required": ["eventId", "timestamp", "projectKey", "taskId", "agentId", "action", "status"],
+  "properties": {
+    "eventId": {"type": "string"},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "gatewayId": {"type": "string"},
+    "projectKey": {"type": "string"},
+    "taskId": {"type": "string"},
+    "sessionKey": {"type": "string"},
+    "agentId": {"type": "string"},
+    "action": {"type": "string"},
+    "resource": {"type": "string"},
+    "status": {"type": "string", "enum": ["success", "failure", "blocked"]},
+    "durationMs": {"type": "number"},
+    "tokensIn": {"type": "number"},
+    "tokensOut": {"type": "number"},
+    "costUsd": {"type": "number"},
+    "approvalRef": {"type": "string"}
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0.0",
+  "taskId": "ALPHA-20260301-001",
+  "projectKey": "alpha",
+  "title": "Add JWT refresh endpoint",
+  "description": "Implement secure refresh token rotation and revocation checks",
+  "type": "feature",
+  "priority": "P1",
+  "riskLevel": "medium",
+  "lifecycleStage": "assignment",
+  "acceptanceCriteria": [
+    "Refresh endpoint issues new access+refresh tokens",
+    "Old refresh token is invalidated",
+    "Integration tests pass"
+  ],
+  "constraints": [
+    "No direct prod access",
+    "No protected branch writes",
+    "Use existing auth service"
+  ],
+  "approvalsNeeded": {
+    "merge": true,
+    "deploy": true,
+    "securityReview": true,
+    "humanApproval": true
+  },
+  "relevantFiles": [
+    "services/auth/refresh.ts",
+    "tests/integration/auth-refresh.test.ts"
+  ],
+  "ownerAgent": "lead-project-alpha",
+  "nextAgent": "backend-worker",
+  "branch": {
+    "base": "main",
+    "name": "task/ALPHA-20260301-001-jwt-refresh"
+  },
+  "rollback": {
+    "plan": "Revert PR and disable route via feature flag",
+    "notes": "No schema change; code rollback only"
+  },
+  "audit": {
+    "createdBy": "router",
+    "createdAt": "2026-03-01T08:05:00Z",
+    "updatedAt": "2026-03-01T08:10:00Z"
+  }
+}

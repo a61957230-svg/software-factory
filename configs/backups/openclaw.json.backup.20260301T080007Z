@@ -1,0 +1,390 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.2.26",
+    "lastTouchedAt": "2026-02-28T16:17:19.517Z"
+  },
+  "env": {
+    "OPENCODE_API_KEY": "sk-aFkTVIYP61opLQRlUxb8X9IFEdtJI7EJuB2LUApGC6CYJS1wJiuRCeaq0ljqNZbX",
+    "MEMORY_SERVICE_URL": "http://127.0.0.1:7071",
+    "MEMORY_DB_PATH": "/data/openclaw/.openclaw/workspace/data/memory/memory.db"
+  },
+  "wizard": {
+    "lastRunAt": "2026-02-21T05:47:10.787Z",
+    "lastRunVersion": "2026.2.17",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "openai-codex:default": {
+        "provider": "openai-codex",
+        "mode": "oauth"
+      },
+      "opencode:default": {
+        "provider": "opencode",
+        "mode": "api_key"
+      },
+      "github-copilot:github": {
+        "provider": "github-copilot",
+        "mode": "token"
+      }
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "kilocode": {
+        "baseUrl": "https://api.kilo.code/v1",
+        "apiKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbnYiOiJwcm9kdWN0aW9uIiwia2lsb1VzZXJJZCI6IjllNWY4NTg4LWQ3NmMtNDVlMS1iZmIxLTcxM2QzZmQ2MjQ0YyIsImFwaVRva2VuUGVwcGVyIjpudWxsLCJ2ZXJzaW9uIjozLCJpYXQiOjE3NzE4NzgxOTUsImV4cCI6MTkyOTU1ODE5NX0.rR9vfxMyyfmc8RYe8K1Sgj56cXO4tfTMLR1GjoBb4S4",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "z-ai/GLM-5:free",
+            "name": "GLM-5",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 204800,
+            "maxTokens": 8192
+          },
+          {
+            "id": "z-ai/glm-5",
+            "name": "GLM-5",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 204800,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "custom-api-kilo-ai": {
+        "baseUrl": "https://api.kilo.ai/api/gateway",
+        "apiKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbnYiOiJwcm9kdWN0aW9uIiwia2lsb1VzZXJJZCI6IjllNWY4NTg4LWQ3NmMtNDVlMS1iZmIxLTcxM2QzZmQ2MjQ0YyIsImFwaVRva2VuUGVwcGVyIjpudWxsLCJ2ZXJzaW9uIjozLCJpYXQiOjE3NzE5MTE2MzUsImV4cCI6MTkyOTU5MTYzNX0.2ogxLRO_BBAXm4Cxxg9juYSInDe7JAZAdCU939eqbuM",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "z-ai/glm-5:free",
+            "name": "z-ai/glm-5:free (Custom Provider)",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 202800,
+            "maxTokens": 131072
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "custom-api-kilo-ai/z-ai/glm-5:free"
+      },
+      "models": {
+        "openai-codex/gpt-5.3-codex": {},
+        "openai-codex/spark": {},
+        "openai-codex/gpt-5.3-codex-spark": {},
+        "opencode-zen/MiniMax-M2.5-Free": {},
+        "opencode-zen/Kimi-K2.5-Free": {},
+        "opencode-zen/GLM-5-Free": {},
+        "opencode/Kimi-K2.5-Free": {},
+        "opencode/GLM-5-Free": {},
+        "opencode/MiniMax-M2.5-Free": {},
+        "opencode/minimax-m2.5": {},
+        "kilocode/z-ai/GLM-5:free": {
+          "alias": "GLM-5 KiloCode"
+        },
+        "kilocode/z-ai/glm-5": {
+          "alias": "GLM-5 KiloCode"
+        },
+        "custom-api-kilo-ai/z-ai/glm-5:free": {
+          "alias": "GLM-5"
+        },
+        "github-copilot/gpt-4o": {
+          "alias": "Copilot GPT-4o"
+        }
+      },
+      "workspace": "/data/openclaw/.openclaw/workspace",
+      "memorySearch": {
+        "enabled": true,
+        "sources": [
+          "memory",
+          "sessions"
+        ],
+        "extraPaths": [
+          "/data/openclaw/.openclaw/workspace/MEMORY.md",
+          "/data/openclaw/.openclaw/workspace/memory"
+        ],
+        "experimental": {
+          "sessionMemory": true
+        },
+        "provider": "local",
+        "fallback": "none",
+        "local": {
+          "modelPath": "hf:ggml-org/embeddinggemma-300m-qat-q8_0-GGUF/embeddinggemma-300m-qat-Q8_0.gguf",
+          "modelCacheDir": "/data/openclaw/.openclaw/memory-models"
+        },
+        "store": {
+          "path": "/data/openclaw/.openclaw/memory/{agentId}.sqlite"
+        },
+        "sync": {
+          "onSessionStart": true,
+          "onSearch": true,
+          "watch": true,
+          "watchDebounceMs": 1500
+        },
+        "query": {
+          "maxResults": 8,
+          "minScore": 0.15
+        }
+      },
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "default": true,
+        "workspace": "/data/openclaw/.openclaw/workspace",
+        "agentDir": "/data/openclaw/.openclaw/agents/main/agent",
+        "model": {
+          "primary": "github-copilot/gpt-4o"
+        },
+        "subagents": {
+          "allowAgents": [
+            "main",
+            "coder",
+            "coder-kimi",
+            "architect",
+            "saloni",
+            "researcher",
+            "marketer",
+            "health-family"
+          ]
+        }
+      },
+      {
+        "id": "coder",
+        "name": "Coder",
+        "workspace": "/data/openclaw/.openclaw/workspace-coder",
+        "agentDir": "/data/openclaw/.openclaw/agents/coder/agent",
+        "model": {
+          "primary": "openai-codex/gpt-5.3-codex",
+          "fallbacks": [
+            "openai-codex/gpt-5.3-codex"
+          ]
+        }
+      },
+      {
+        "id": "researcher",
+        "name": "Researcher",
+        "workspace": "/data/openclaw/.openclaw/workspace-researcher",
+        "agentDir": "/data/openclaw/.openclaw/agents/researcher/agent"
+      },
+      {
+        "id": "marketer",
+        "name": "Marketer",
+        "workspace": "/data/openclaw/.openclaw/workspace-marketer",
+        "agentDir": "/data/openclaw/.openclaw/agents/marketer/agent",
+        "model": {
+          "primary": "custom-api-kilo-ai/z-ai/glm-5:free"
+        }
+      },
+      {
+        "id": "coder-kimi",
+        "name": "Coder Kimi",
+        "workspace": "/data/openclaw/.openclaw/workspace-coder-kimi",
+        "agentDir": "/data/openclaw/.openclaw/agents/coder-kimi/agent",
+        "model": {
+          "primary": "custom-api-kilo-ai/z-ai/glm-5:free",
+          "fallbacks": [
+            "custom-api-kilo-ai/z-ai/glm-5:free"
+          ]
+        }
+      },
+      {
+        "id": "architect",
+        "name": "Architect",
+        "workspace": "/data/openclaw/.openclaw/workspace-architect",
+        "agentDir": "/data/openclaw/.openclaw/agents/architect/agent",
+        "model": {
+          "primary": "openai-codex/gpt-5.3-codex"
+        }
+      },
+      {
+        "id": "saloni",
+        "name": "Saloni",
+        "workspace": "/data/openclaw/.openclaw/workspace-saloni",
+        "agentDir": "/data/openclaw/.openclaw/agents/saloni/agent",
+        "model": {
+          "primary": "openai-codex/gpt-5.3-codex",
+          "fallbacks": [
+            "openai-codex/gpt-5.3-codex"
+          ]
+        }
+      },
+      {
+        "id": "health-family",
+        "name": "health-family",
+        "workspace": "/data/openclaw/.openclaw/workspace-health-family",
+        "agentDir": "/home/adarsh/.openclaw/agents/health-family/agent",
+        "model": "openai-codex/gpt-5.3-codex",
+        "identity": {
+          "name": "SwasthSaathi",
+          "theme": "Family Health Planner",
+          "emoji": "\ud83e\ude7a"
+        }
+      }
+    ]
+  },
+  "tools": {
+    "sessions": {
+      "visibility": "all"
+    },
+    "agentToAgent": {
+      "enabled": true
+    }
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "hooks": {
+    "enabled": true,
+    "path": "/hooks",
+    "token": "34a99c8271c8f684f73f83952a9f4cec95890694c7fbd31a",
+    "allowedAgentIds": [
+      "main",
+      "hooks"
+    ],
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "session-memory": {
+          "enabled": true
+        },
+        "command-logger": {
+          "enabled": true
+        },
+        "boot-md": {
+          "enabled": true
+        },
+        "bootstrap-extra-files": {
+          "enabled": true
+        }
+      }
+    }
+  },
+  "channels": {
+    "whatsapp": {
+      "enabled": true,
+      "dmPolicy": "allowlist",
+      "selfChatMode": true,
+      "allowFrom": [
+        "+919508103357",
+        "+917869658500"
+      ],
+      "groupPolicy": "allowlist",
+      "debounceMs": 0,
+      "mediaMaxMb": 50
+    },
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "botToken": "8259744006:AAFYAPikdVvsERB-JpLV8-AyfSZtvquZLww",
+      "groupPolicy": "allowlist",
+      "streaming": "partial"
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "c3ca5622ca88b582dc58e1646525e2e4191d8dd85f9bc461"
+    },
+    "tailscale": {
+      "mode": "serve",
+      "resetOnExit": false
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "calendar.add",
+        "contacts.add",
+        "reminders.add"
+      ]
+    }
+  },
+  "skills": {
+    "install": {
+      "nodeManager": "npm"
+    }
+  },
+  "plugins": {
+    "allow": [
+      "device-pair",
+      "memory-core",
+      "phone-control",
+      "talk-voice",
+      "telegram",
+      "whatsapp",
+      "persistent-memory-mvp"
+    ],
+    "entries": {
+      "telegram": {
+        "enabled": true
+      },
+      "whatsapp": {
+        "enabled": true
+      },
+      "persistent-memory-mvp": {
+        "enabled": true,
+        "config": {
+          "serviceUrl": "http://127.0.0.1:7071",
+          "preStepEnabled": true,
+          "postStepEnabled": true,
+          "maxItems": 8,
+          "maxChars": 500,
+          "qaMode": true,
+          "qaLogPath": "/data/openclaw/.openclaw/workspace/data/memory/qa-log.jsonl"
+        }
+      }
+    }
+  }
+}

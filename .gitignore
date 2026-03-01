@@ -1,0 +1,5 @@
+*.log
+*.sqlite
+*.db
+.env
+secrets/

@@ -1,0 +1,73 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": "/opt/software-factory/global",
+      "model": { "primary": "github-copilot/gpt-4o" },
+      "memorySearch": {
+        "enabled": true,
+        "sources": ["memory", "sessions"],
+        "provider": "local",
+        "store": { "path": "/opt/software-factory/memory/{agentId}.sqlite" },
+        "sync": { "onSessionStart": true, "onSearch": true, "watch": true },
+        "query": { "maxResults": 8, "minScore": 0.2 }
+      },
+      "compaction": { "mode": "safeguard" },
+      "maxConcurrent": 6,
+      "subagents": { "maxConcurrent": 12 }
+    },
+    "list": [
+      {
+        "id": "router",
+        "default": true,
+        "workspace": "/opt/software-factory/workspace-router",
+        "agentDir": "/opt/software-factory/agents/router",
+        "model": { "primary": "github-copilot/gpt-4o" },
+        "subagents": {
+          "allowAgents": [
+            "lead-project-alpha",
+            "lead-project-beta",
+            "lead-project-gamma",
+            "backend-worker",
+            "frontend-worker",
+            "qa-worker",
+            "devops-worker",
+            "docs-release-writer",
+            "code-reviewer",
+            "security-reviewer",
+            "release-gatekeeper"
+          ]
+        }
+      },
+      {"id": "lead-project-alpha", "workspace": "/opt/software-factory/projects/alpha", "agentDir": "/opt/software-factory/agents/lead-project-alpha", "model": {"primary": "github-copilot/gpt-4o"}},
+      {"id": "lead-project-beta", "workspace": "/opt/software-factory/projects/beta", "agentDir": "/opt/software-factory/agents/lead-project-beta", "model": {"primary": "github-copilot/gpt-4o"}},
+      {"id": "lead-project-gamma", "workspace": "/opt/software-factory/projects/gamma", "agentDir": "/opt/software-factory/agents/lead-project-gamma", "model": {"primary": "github-copilot/gpt-4o"}},
+      {"id": "backend-worker", "workspace": "/opt/software-factory/workers/backend", "agentDir": "/opt/software-factory/agents/backend-worker", "model": {"primary": "github-copilot/gpt-4o"}},
+      {"id": "frontend-worker", "workspace": "/opt/software-factory/workers/frontend", "agentDir": "/opt/software-factory/agents/frontend-worker", "model": {"primary": "github-copilot/gpt-4o"}},
+      {"id": "qa-worker", "workspace": "/opt/software-factory/workers/qa", "agentDir": "/opt/software-factory/agents/qa-worker", "model": {"primary": "github-copilot/gpt-4o"}},
+      {"id": "devops-worker", "workspace": "/opt/software-factory/workers/devops", "agentDir": "/opt/software-factory/agents/devops-worker", "model": {"primary": "github-copilot/gpt-4o"}},
+      {"id": "docs-release-writer", "workspace": "/opt/software-factory/workers/docs", "agentDir": "/opt/software-factory/agents/docs-release-writer", "model": {"primary": "github-copilot/gpt-4o"}},
+      {"id": "code-reviewer", "workspace": "/opt/software-factory/review/code", "agentDir": "/opt/software-factory/agents/code-reviewer", "model": {"primary": "github-copilot/gpt-4o"}},
+      {"id": "security-reviewer", "workspace": "/opt/software-factory/review/security", "agentDir": "/opt/software-factory/agents/security-reviewer", "model": {"primary": "github-copilot/gpt-4o"}},
+      {"id": "release-gatekeeper", "workspace": "/opt/software-factory/release", "agentDir": "/opt/software-factory/agents/release-gatekeeper", "model": {"primary": "github-copilot/gpt-4o"}}
+    ]
+  },
+  "tools": {
+    "sessions": { "visibility": "all" },
+    "agentToAgent": { "enabled": true }
+  },
+  "gateway": {
+    "mode": "local",
+    "bind": "loopback",
+    "auth": { "mode": "token" },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "calendar.add",
+        "contacts.add",
+        "reminders.add"
+      ]
+    }
+  }
+}
