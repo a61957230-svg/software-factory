@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0.0",
+  "taskId": "ALPHA-20260301-401",
+  "projectKey": "alpha",
+  "title": "Create basic status utility demo",
+  "description": "Build a tiny Python utility that prints service status JSON for demo purposes",
+  "type": "feature",
+  "priority": "P3",
+  "riskLevel": "low",
+  "lifecycleStage": "assignment",
+  "acceptanceCriteria": [
+    "Script runs with python3",
+    "Outputs valid JSON with service and timestamp",
+    "Artifact file contains sample output"
+  ],
+  "constraints": [
+    "No network calls",
+    "No external dependencies",
+    "Only task workspace files"
+  ],
+  "approvalsNeeded": {
+    "merge": true,
+    "deploy": false,
+    "securityReview": false,
+    "humanApproval": false
+  },
+  "relevantFiles": [
+    "projects/alpha/tasks/ALPHA-20260301-401/artifacts/status_tool.py",
+    "projects/alpha/tasks/ALPHA-20260301-401/artifacts/sample-output.json"
+  ],
+  "ownerAgent": "lead-project-alpha",
+  "nextAgent": "backend-worker",
+  "branch": {
+    "base": "main",
+    "name": "task/ALPHA-20260301-401-basic-status-utility"
+  },
+  "rollback": {
+    "plan": "Delete task artifacts and revert commit",
+    "notes": "Demo-only task; no runtime impact"
+  },
+  "audit": {
+    "createdBy": "router",
+    "createdAt": "2026-03-01T12:11:39Z",
+    "updatedAt": "2026-03-01T12:11:39Z"
+  }
+}

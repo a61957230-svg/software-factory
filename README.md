@@ -17,10 +17,12 @@ This package is an implementation-ready multi-agent factory scaffold for OpenCla
 4. Enforce runtime assignment gate: `python3 scripts/assign_task.py examples/task-packet.alpha.json`
 5. Run queue/approval monitor: `python3 scripts/monitor_factory.py`
 6. Use guarded command gate for risky ops: `scripts/guarded_exec.sh --approval-id <ID> -- "<command>"`
-7. Copy AGENTS templates from `templates/`
-8. Wire CI from `.github/workflows/pr-checks.yml`
-9. Enable local git gate hooks: `git config core.hooksPath .githooks`
-10. Apply GitHub branch protection (when token available):
+7. Run full auto SDLC pipeline (research → plan → develop → review → release):
+   - `python3 scripts/run_autopilot_pipeline.py examples/task-packet.alpha.autopilot.json`
+8. Copy AGENTS templates from `templates/`
+9. Wire CI from `.github/workflows/pr-checks.yml`
+10. Enable local git gate hooks: `git config core.hooksPath .githooks`
+11. Apply GitHub branch protection (when token available):
    - `GH_TOKEN=... GH_OWNER=... GH_REPO=... scripts/github_apply_protection.sh`
 
 ## Agent Roster (initial)
